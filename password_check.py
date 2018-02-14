@@ -1,11 +1,20 @@
+import string
 
 
 def checkio(data):
     if len(data) < 10:
         return False
-        any([or i in data if i.is_digit()])
+    if not [c for c in data if c.isdigit()]:
+        return False
+    if not [c for c in data if c.islower()]:
+        return False
+    if not [c for c in data if not c.islower()]:
+        return False
+    res = set(data.lower()) - set(string.ascii_lowercase)
+    if len(res) and not ''.join(res).isdigit():
+        return False
 
-    return True or False
+    return True
 
 #Some hints
 #Just check all conditions
